@@ -111,7 +111,11 @@ fn main() {
                 let index = buf[1..buf.len()].trim().parse();
                 match index {
                     Ok(index) => {
-                        todoitems.remove(index);
+                        if index < todoitems.len() {
+                            todoitems.remove(index);
+                        } else {
+                            println!("Out of range")
+                        }
                     },
                     Err(e) => println!("Could not parse int. Not removed. {}", e),
                 }
@@ -120,7 +124,11 @@ fn main() {
                 let index: Result<usize, _> = buf[1..buf.len()].trim().parse();
                 match index {
                     Ok(index) => {
-                        todoitems[index].complete();
+                        if index < todoitems.len() {
+                            todoitems[index].complete();
+                        } else {
+                            println!("Out of range")
+                        }
                     },
                     Err(e) => println!("Could not parse int. Not marked as complete. {}", e),
                 }
