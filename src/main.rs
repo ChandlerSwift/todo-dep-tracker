@@ -140,5 +140,5 @@ fn main() {
 
     file.rewind().unwrap();
     file.set_len(0).unwrap(); // TODO: instead of these; consider reopening with write/truncate set
-    writeln!(file, "{}", serde_json::to_string(&todoitems).unwrap()).unwrap();
+    writeln!(file, "{}", serde_json::to_string_pretty(&todoitems).unwrap()).unwrap();
 }
